@@ -84,30 +84,44 @@ function editar(titulo) {
 
     for (let i = 0; i < productos.length; i++) {
         if (productos[i].producto === titulo) {
-            document.getElementById("formulario-edicion").innerHTML =
+            document.getElementById("productos").innerHTML =
                 `
-                <!-- Formulario de edición -->
-                <div class="form-group">
-                    <input type="text" id="newproducto" class="form-control my-3" placeholder='${productos[i].producto}'>
+                <div class="container mt-4" id="body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2>Lista de Productos</h2>
+                                </div>
+                                <div class="card-body">
+                                    <form id="formulario-edicion">
+                                        <div class="form-group">
+                                            <input type="text" id="newproducto" class="form-control my-3" placeholder="Ingresar producto" value="${productos[i].producto}">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea id="newdescripcion" class="form-control my-3" placeholder="Descripción del producto">${productos[i].descripcion}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="date" id="newvencimiento" class="form-control my-3" placeholder="Fecha de vencimiento" value="${productos[i].vencimiento}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="newlote" class="form-control my-3" placeholder="Lote" value="${productos[i].lote}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" id="newprecio" class="form-control my-3" placeholder="Precio" value="${productos[i].precio}">
+                                            <button type="button" class="btn btn-primary" onclick="actualizar(${i})">Actualizar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <textarea id="newdescripcion" class="form-control my-3" placeholder='${productos[i].descripcion}'></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="newvencimiento" class="form-control my-3" placeholder='${productos[i].vencimiento}'/>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="newlote" class="form-control my-3" placeholder='${productos[i].lote}'/>
-                </div>
-                <div class="form-group">
-                    <input type="number" id="newprecio" class="form-control my-3" placeholder='${productos[i].precio}'/>
-                </div>
-                <button class="btn btn-success" onclick="actualizar('${i}')">Actualizar</button>
-                <button class="btn btn-primary" onclick="cancelar()">Cancelar</button>
                 `;
         }
     }
 }
+
 
 // Función actualizar
 function actualizar(i) {
